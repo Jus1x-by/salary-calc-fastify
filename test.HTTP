@@ -1,0 +1,9 @@
+POST http://localhost:3000/api/v1/registration
+Content-Type: application/json
+
+{
+  "email": "asd@mail.ru",
+  "password": "123",
+  "firstName": "Alexander",
+  "lastName": "Ne Mitii"
+}

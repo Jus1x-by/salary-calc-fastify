@@ -1,0 +1,23 @@
+{
+  "name": "salary-calculator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
+    "fastify": "^3.23.0",
+    "fastify-swagger": "^4.12.6",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^4.1.4",
+    "pg": "^8.7.1",
+    "sequelize": "^6.6.5",
+    "uuid": "^8.3.2"
+  }
+}
