@@ -6,7 +6,7 @@ const { sign } = require('jsonwebtoken')
 
 const selectEmployeeS = async (req, reply) => {
   console.log('ITS WORK')
-  reply.send(await dataDb.findAllEmployee('61849d27ec58a6679a4a2246'))
+  reply.send(await dataDb.findAllEmployee(req.user.id))
 }
 
 const selectEmployee = async (req, reply) => {
@@ -14,13 +14,12 @@ const selectEmployee = async (req, reply) => {
 }
 
 const createEmployee = async (req, reply) => {
-  console.log('req.user', req.user);
   const customer = await dataDb.findUserById(req.user.id)
-  console.log('customer', customer)
   reply.send(
     await dataDb.createEmployee({ 
       ...req.body, 
-      custtomerId: customer._id 
+      customerId: customer._id,
+      totalEarned: req.body.hourlyRate * (req.body.hoursWorked + req.body.overtime * 1.5)
     })
   )
 }

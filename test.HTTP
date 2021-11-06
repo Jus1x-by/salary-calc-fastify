@@ -24,15 +24,15 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxODQ5ZDI3ZWM1OGE2Njc5YTRhMjI0NiIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjM2MDkwNTMzfQ.B3CmMxVrp4wK-mHO0mnylo-hgVhpyW-77Xulno2XrQc
 
 {
-  "firstName": "Rahim",
-  "lastName": "Dudush",
-  "position": "Frontend developer",
-  "hourlyRate": 2.8,
-  "hoursWorked": 176,
-  "overtime": 20
+  "firstName": "New",
+  "lastName": "front",
+  "position": "Backend developer",
+  "hourlyRate": 4,
+  "hoursWorked": 50,
+  "overtime": 100
 }
 
 ### select all employee's
 GET http://localhost:3001/api/v1/employees HTTP/1.1
 Content-Type: application/json
-Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxODQ5ZDI3ZWM1OGE2Njc5YTRhMjI0NiIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjM2MDkwNTMzfQ.B3CmMxVrp4wK-mHO0mnylo-hgVhpyW-77Xulno2XrQc'
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxODQ5ZDI3ZWM1OGE2Njc5YTRhMjI0NiIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjM2MDkwNTMzfQ.B3CmMxVrp4wK-mHO0mnylo-hgVhpyW-77Xulno2XrQc

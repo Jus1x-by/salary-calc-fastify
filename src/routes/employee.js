@@ -6,10 +6,6 @@ const {
 
 const { requireAuth } = require('../middlewares/reqAuth');
 
-const {
-  reqAuth
-} = require('../plugins/reqAuth')
-
 const Employee = {
   type: 'object',
   properties: {
