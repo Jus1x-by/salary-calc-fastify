@@ -27,11 +27,16 @@ class DataDB {
 
   async findUser(email){
     const connection = await this.getConnection()
-    const existUser = await connection.findOne({
+    return await connection.findOne({
       email: email
-    });
+    })
+  }
 
-    return existUser
+  async findUserById(id){
+    const connection = await this.getConnection()
+    return await connection.findOne({
+      '_id': `ObjectId("${id}")`
+    })
   }
 
   async getStepInputData(stepNumber) {
@@ -70,6 +75,22 @@ class DataDB {
     return connection.find({
       _id: { $in: objectIds },
     }).toArray();
+  }
+
+  async findAllEmployee(userId) {
+    const connection = await this.getConnection();
+    return await connection.find({
+      sourceId: userId
+    }).toArray()
+  }
+
+  async createEmployee(employee) {
+    const connection = await this.getConnection();
+    const data = await connection.insertOne(employee)
+    console.log('data', data);
+    return await connection.findOne({ 
+      _id: data.insertedId
+    });
   }
 
 }

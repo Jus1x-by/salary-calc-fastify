@@ -1,7 +1,9 @@
+const { default: fastify } = require('fastify');
 const {
   createUser,
   loginUser,
 } = require('../controllers/auth');
+
 
 const User = {
   type: 'object',
@@ -24,15 +26,8 @@ const postRegistration = {
     },
     response: {
       201: User,
-      400: {
-        error: { type: 'string' },
-      },
-      500: {
-        error: { type: 'string' },
-      }
     },
-  },
-  handler: createUser,
+  }
 }
 
 const postLogin = {
@@ -50,23 +45,16 @@ const postLogin = {
     200: {
       ...User.properties,
       token: { type: 'string' }
-    },
-    404: {
-      error: 'User not found',
-    },
-    500: {
-      error: 'Server error'
     }
   },
-  handler: loginUser
 }
 
 function auth(fastify, options, done) {
 
   // Registration
-  fastify.post('/registration', postRegistration)
+  fastify.post('/registration', postRegistration, createUser)
   // Login
-  fastify.post('/login', postLogin)
+  fastify.post('/login', postLogin, loginUser)
 
   done()
 
