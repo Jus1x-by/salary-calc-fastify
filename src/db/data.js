@@ -34,7 +34,7 @@ class DataDB {
   }
 
   async findUserById(id){
-    console.log('id', id);
+    console.log('id', id)
     const connection = await this.getConnection()
     return await connection.findOne({
       _id: ObjectId(id)
@@ -42,18 +42,26 @@ class DataDB {
   }
 
   async findAllEmployee(userId) {
-    const connection = await this.getConnection();
+    const connection = await this.getConnection()
     return await connection.find({
       customerId: ObjectId(userId)
     }).toArray()
   }
 
   async createEmployee(employee) {
-    const connection = await this.getConnection();
+    const connection = await this.getConnection()
     const data = await connection.insertOne(employee)
     return await connection.findOne({ 
       _id: data.insertedId
-    });
+    })
+  }
+
+  async updateEmployee(employee) {
+    const connection = await this.getConnection()
+    await connection.updateOne({ _id: employee._id }, {
+      $set: employee,
+    })
+    return await this.findUserById(employee._id);
   }
 
 }

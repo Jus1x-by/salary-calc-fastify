@@ -1,10 +1,11 @@
 const {
   selectEmployeeS,
   selectEmployee,
-  createEmployee
-} = require('../controllers/employee');
+  createEmployee,
+  updateEmployee
+} = require('../controllers/employee')
 
-const { requireAuth } = require('../middlewares/reqAuth');
+const { requireAuth } = require('../middlewares/reqAuth')
 
 const Employee = {
   type: 'object',
@@ -61,6 +62,23 @@ const postEmployee = {
   }
 }
 
+const putEmployee = {
+  schema: {
+    body: {
+      type: 'object',
+      properties: {
+        hoursWorked: { type: 'number' },
+        overtime: { type: 'number' },
+        hourlyRate: { type: 'number' }
+      }
+    },
+    headers: headersJwt,
+    response: {
+      200: Employee
+    }
+  }
+}
+
 function employee(fastify, options, done) {
 
   // Many employee's
@@ -69,6 +87,8 @@ function employee(fastify, options, done) {
   fastify.get('/employee/:id', { getEmployee, preHandler: requireAuth, handler: selectEmployee })
   // Add employee
   fastify.post('/employee', { postEmployee, preHandler: requireAuth, handler: createEmployee} )
+  // Update employee
+  fastify.put('/employee', { putEmployee, preHandler: requireAuth, handler: updateEmployee })
 
   done()
 
